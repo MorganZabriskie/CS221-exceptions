@@ -45,14 +45,27 @@ public class FormatChecker {
 
             //scan rest of file to check correct amount of rows/cols and all doubles
             Double[][] fileCheck = new Double[rows][cols];
+            int rowCount = 0;
+            int colCount = 0;
             for(int i = 0; i < fileCheck.length; i++) {
                 String rowScan = scan.nextLine();
                 Scanner lineScan = new Scanner(rowScan);
                 lineScan.useDelimiter("\s");
-                for (int j = 0; j < fileCheck[0].length; j++) {
+                for (int j = 0; j < fileCheck.length; j++) {
                     fileCheck[i][j] = Double.parseDouble(lineScan.next());
+                    colCount++;
+                }
+                if (colCount != cols) {
+                    System.out.println("File is not in correct format (number of columns is incorrect)");
+                    break;
                 }
                 lineScan.close();
+            }
+            rowCount++;
+            
+            // check for valid conditions
+            if ((rowCount == rows) && (colCount == cols)){
+                valid = true;
             }
         }
         return valid;
