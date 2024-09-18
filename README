@@ -1,25 +1,19 @@
 ****************
 * Exceptions
 * CS221 Fall 2024
-* 09/12/24
+* 09/17/24
 * Morgan Zabriskie
 **************** 
 
 OVERVIEW:
 
- Concisely explain what the program does. If this exceeds a couple
- of sentences, you're going too far. The details go in other
- sections.
+This FormatChecker program takes files from the command line
+and checks if the file is valid or invalid based on the criteria
+outlined in the program design section below.
 
 
 INCLUDED FILES:
-
- List the files required for the project with a brief
- explanation of why each is included.
-
- e.g.
- * Class1.java - source file
- * Class2.java - source file
+ * FormatChecker.java - main driver and FormatChecker class
  * README - this file
 
 
