@@ -43,6 +43,19 @@ PROGRAM DESIGN AND IMPORTANT CONCEPTS:
  instantiates whether the file is valid or not by calling the
  isValid() method. Then the main driver calls the returnMessage() method
  to let the user know if the file was valid or invalid.
+
+ A valid file has the following
+ format:
+ -First row contains two integers separated by a white space. The first 
+ value is the number of rows in a grid and the second value is the number 
+ of columns in the grid.
+ -The rest of the file should be a grid of double values that follows
+ the number of rows and columns given in the first row.
+ An example of a correctly formatted file is:
+
+ 2 3
+ 1.0 2 3
+ 1 2.0 3
  
  The exceptions handling in this program is done through try and catch 
  blocks. When an exception is caught, the exception's toString() method 
