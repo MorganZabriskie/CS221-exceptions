@@ -19,70 +19,76 @@ INCLUDED FILES:
 
 COMPILING AND RUNNING:
 
- Give the command for compiling the program, the command
- for running the program, and any usage instructions the
- user needs.
- 
- These are command-line instructions for a system like onyx.
- They have nothing to do with Eclipse or any other IDE. They
- must be specific - assume the user has Java installed, but
- has no idea how to compile or run a Java program from the
- command-line.
- 
- e.g.
- From the directory containing all source files, compile the
- driver class (and all dependencies) with the command:
- $ javac Class1.java
+ From the folder that contains all source files, compile
+ with the command:
+ $ javac FormatChecker.java
 
- Run the compiled class file with the command:
- $ java Class1
+ Run the compiled class and provide file names to be checked
+ as valid or invalid with the command:
+ $ java FormatChecker file1 [file2 ... fileN]
 
- Console output will give the results after the program finishes.
+ The console output will list the name of the file, any errors
+ in the file format, and whether it is valid or invalid.
 
 
 PROGRAM DESIGN AND IMPORTANT CONCEPTS:
 
- This is the sort of information someone who really wants to
- understand your program - possibly to make future enhancements -
- would want to know.
+ The FormatChecker() program is found all in one source file. This is
+ because the main driver and the class and methods are short enough
+ that they can all be in one file without being too cluttered or
+ confusing.
 
- Explain the main concepts and organization of your program so that
- the reader can understand how your program works. This is not a repeat
- of javadoc comments or an exhaustive listing of all methods, but an
- explanation of the critical algorithms and object interactions that make
- up the program.
-
- Explain the main responsibilities of the classes and interfaces that make
- up the program. Explain how the classes work together to achieve the program
- goals. If there are critical algorithms that a user should understand, 
- explain them as well.
+ The driver class runs through each file given by the user in the 
+ command line, creating a new FormatChecker object. The constructor
+ instantiates whether the file is valid or not by calling the
+ isValid() method. Then the main driver calls the returnMessage() method
+ to let the user know if the file was valid or invalid.
  
- If you were responsible for designing the program's classes and choosing
- how they work together, why did you design the program this way? What, if 
- anything, could be improved? 
+ The exceptions handling in this program is done through try and catch 
+ blocks. When an exception is caught, the exception's toString() method 
+ is called so the user can see a short message of why their file was
+ invalid or why the program could not run.
+
+ Given more time I would try to make the exceptions handling more consistent
+ throughout the program. Right now it's a mix of methods that throw an
+ exception and methods that exclusively use try/catch blocks.
 
 TESTING:
+ 
+ This program was tested by using a variety of valid and invalid files that
+ tested:
+ - If the first row had the right number of arguments, that they were integers,
+ and that they were positive
+ - If the grid after the first row had the exact right number of rows and 
+ columns and that those values were all doubles
 
- How did you test your program to be sure it works and meets all of the
- requirements? What was the testing strategy? What kinds of tests were run?
- Can your program handle bad input? Is your program  idiot-proof? How do you 
- know? What are the known issues / bugs remaining in your program?
+ We also tested for if the file name did not exist and if there were no files
+ given in the command line. 
 
 
 DISCUSSION:
- 
- Discuss the issues you encountered during programming (development)
- and testing. What problems did you have? What did you have to research
- and learn on your own? What kinds of errors did you get? How did you 
- fix them?
- 
- What parts of the project did you find challenging? Is there anything
- that finally "clicked" for you in the process of working on this project?
- 
- 
-EXTRA CREDIT:
 
- If the project had opportunities for extra credit that you attempted,
- be sure to call it out so the grader does not overlook it.
+ This assignment was good for testing my understanding of exceptions and how
+ they work in practice. I found that I was trying to throw an exception but
+ was also writing if statements that would prevent the error from ever being
+ thrown - i.e. I was throwing a FileNotFoundException in the method header
+ but then also writing an if(file.exists() && file.isFile()) statement that
+ would preclude the error being thrown.
+
+ I also ran into some issues with the scanner not parsing things the way I
+ thought it would, so had to really think through what's happening when
+ I say scan.next() versus scan.nextLine(), etc. The delimeter I initially
+ used ("\s") didn't account for whitespaces that were more than one space,
+ but I did some research and found that ("\\s+") would account for 
+ multiple white spaces.
+
+ Initially I was writing all my own error messages but saw in some of the 
+ code examples that you can use error.toString() and it gives you a nice
+ short exception message and sometimes includes details about what caused the
+ exception. I liked that there was that option and that they were so succint.
+
+ I need to review exceptions more - I still don't think I 100% get them. Will
+ plan to stop by for office hours to discuss more!
+
 
 
